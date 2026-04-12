@@ -41,7 +41,7 @@ sudo systemctl restart airflow-webserver
 - **Text search**: Dag name 및 tag 통합 검색
 - **Filter reset**: 모든 필터 초기화 버튼
 - **Hover tooltips**: mean/median start/end, duration, run count, tags
-- **KST (UTC+9) timezone**: 시간축이 한국 표준시 기준으로 표시
+- **Browser timezone**: 시간축이 브라우저 로컬 시간대 기준으로 표시
 
 ## UI Development
 

@@ -8,7 +8,6 @@ const PALETTE = [
 ];
 
 const LIMIT_OPTIONS = [10, 25, 50, 100, 0] as const;
-const KST_OFFSET = 9 * 60;
 
 function dagPrefix(dagId: string): string {
   const parts = dagId.split("_");
@@ -31,8 +30,7 @@ function buildPrefixColors(data: DagStats[]): Record<string, string> {
 
 function minutesOfDay(isoStr: string): number {
   const dt = new Date(isoStr);
-  const utcMin = dt.getUTCHours() * 60 + dt.getUTCMinutes() + dt.getUTCSeconds() / 60;
-  return (utcMin + KST_OFFSET) % 1440;
+  return dt.getHours() * 60 + dt.getMinutes() + dt.getSeconds() / 60;
 }
 
 function minutesToHhmm(min: number): string {

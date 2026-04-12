@@ -4,6 +4,10 @@ Airflow 3.x plugin that visualizes Dag execution times as a 24-hour Gantt chart.
 
 Shows average/median start and end times for each Dag based on recent successful runs. Uses `react_apps` to render natively within the Airflow UI.
 
+![Gantt Chart](docs/gantt-chart.png)
+
+![Tooltip](docs/tooltip.png)
+
 ## Requirements
 
 - Python >= 3.10

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "airflow-dag-gantt"
+version = "0.1.0"
+description = "Airflow 3.x plugin that visualizes Dag execution times as a Gantt chart"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+authors = [{ name = "Yeonguk Choo" }]
+keywords = ["airflow", "plugin", "gantt", "visualization"]
+classifiers = [
+    "Framework :: Apache Airflow",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "apache-airflow>=3.0.0",
+]
+
+[project.entry-points."airflow.plugins"]
+dag_gantt = "airflow_dag_gantt.plugin:DagGanttPlugin"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+airflow_dag_gantt = ["static/**", "dist/**"]

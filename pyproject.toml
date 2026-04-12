@@ -26,4 +26,4 @@ dag_gantt = "airflow_dag_gantt.plugin:DagGanttPlugin"
 where = ["src"]
 
 [tool.setuptools.package-data]
-airflow_dag_gantt = ["static/**", "dist/**"]
+airflow_dag_gantt = ["dist/**"]

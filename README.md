@@ -4,24 +4,28 @@ Airflow 3.x plugin that visualizes Dag execution times as a 24-hour Gantt chart.
 
 Shows average/median start and end times for each Dag based on recent successful runs. Uses `react_apps` to render natively within the Airflow UI.
 
+## Requirements
+
+- Python >= 3.10
+- Apache Airflow >= 3.0.0
+
 ## Installation
 
 ```bash
 pip install git+https://github.com/choo121600/airflow-dag-gantt.git
 ```
 
-Or clone and deploy manually to `~/airflow/plugins/`:
+Or clone and install in editable mode:
 
 ```bash
 git clone https://github.com/choo121600/airflow-dag-gantt.git
-cp src/airflow_dag_gantt/plugin.py ~/airflow/plugins/dag_gantt_plugin.py
-mkdir -p ~/airflow/plugins/dist
-cp src/airflow_dag_gantt/dist/main.umd.cjs ~/airflow/plugins/dist/
+cd airflow-dag-gantt
+pip install -e .
 ```
 
 ## Configuration
 
-No additional configuration required. The plugin uses the logged-in user's session to call Airflow's REST API directly from the browser.
+No additional configuration required. The plugin uses the logged-in user's session to call Airflow's REST API (`/api/v2/`) directly from the browser.
 
 After installation, restart the webserver:
 
@@ -31,14 +35,15 @@ sudo systemctl restart airflow-webserver
 
 ## Features
 
-- **24h timeline Gantt chart** with responsive width
+- **24h timeline Gantt chart** with responsive width (ResizeObserver)
 - **Mean/Median toggle** for execution time statistics
 - **Run count selector**: 10, 25, 50, 100, or All
-- **Prefix-based color grouping**: mdi, wisereport, dart, news, etc.
-- **Clickable legend filtering**: click a prefix to show/hide Dags
-- **Text search**: filter Dags by name
+- **Prefix-based color grouping**: Dag ID prefix별 자동 색상 구분
+- **Tag-based filtering**: tag 버튼 토글로 Dag 필터링 (12개 미리보기 + 확장)
+- **Text search**: Dag name 및 tag 통합 검색
+- **Filter reset**: 모든 필터 초기화 버튼
 - **Hover tooltips**: mean/median start/end, duration, run count, tags
-- **Session-based auth**: uses logged-in user's session to call Airflow REST API `/api/v2/` directly
+- **KST (UTC+9) timezone**: 시간축이 한국 표준시 기준으로 표시
 
 ## UI Development
 
@@ -57,7 +62,7 @@ cp ui/dist/main.umd.cjs src/airflow_dag_gantt/dist/
 
 ## Tech Stack
 
-- **Frontend**: React 19, ChakraUI v3, Vite (UMD build)
+- **Frontend**: React 19, TypeScript, ChakraUI v3, Vite (UMD build)
 - **Backend**: FastAPI (Airflow plugin, static file serving only)
 - **Integration**: Airflow 3.x `react_apps` plugin API
 

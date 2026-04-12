@@ -19,6 +19,11 @@ dependencies = [
     "apache-airflow>=3.0.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/choo121600/airflow-dag-gantt"
+Repository = "https://github.com/choo121600/airflow-dag-gantt"
+Issues = "https://github.com/choo121600/airflow-dag-gantt/issues"
+
 [project.entry-points."airflow.plugins"]
 dag_gantt = "airflow_dag_gantt.plugin:DagGanttPlugin"
 

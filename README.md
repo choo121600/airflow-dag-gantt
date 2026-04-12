@@ -12,15 +12,13 @@ Shows average/median start and end times for each Dag based on recent successful
 ## Installation
 
 ```bash
-pip install git+https://github.com/choo121600/airflow-dag-gantt.git
+pip install airflow-dag-gantt
 ```
 
-Or clone and install in editable mode:
+Or install from source:
 
 ```bash
-git clone https://github.com/choo121600/airflow-dag-gantt.git
-cd airflow-dag-gantt
-pip install -e .
+pip install git+https://github.com/choo121600/airflow-dag-gantt.git
 ```
 
 ## Configuration

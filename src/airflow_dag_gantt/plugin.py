@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import mimetypes
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -9,7 +10,9 @@ from fastapi.staticfiles import StaticFiles
 
 from airflow.plugins_manager import AirflowPlugin
 
-app = FastAPI(title="Dag Gantt Chart", version="0.2.1")
+mimetypes.add_type("application/javascript", ".cjs")
+
+app = FastAPI(title="Dag Gantt Chart", version="0.2.2")
 
 _dist_dir = Path(__file__).parent / "dist"
 if _dist_dir.exists():
@@ -31,7 +34,7 @@ class DagGanttPlugin(AirflowPlugin):
         {
             "name": "Dag Gantt Chart",
             "url_route": "dag-gantt",
-            "bundle_url": "/dag-gantt/dist/main.js",
+            "bundle_url": "/dag-gantt/dist/main.umd.cjs",
             "destination": "nav",
             "category": "browse",
         }

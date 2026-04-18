@@ -13,24 +13,12 @@ export default defineConfig(({ command }) => {
           chunkSizeWarningLimit: 1600,
           lib: {
             entry: resolve("src", "main.tsx"),
-            fileName: "main",
-            formats: ["umd"],
-            name: "AirflowPlugin",
+            fileName: () => "main.js",
+            formats: ["es"],
           },
           rollupOptions: {
-            external: [
-              "react",
-              "react-dom",
-              "react-router-dom",
-              "react/jsx-runtime",
-            ],
             output: {
-              globals: {
-                react: "React",
-                "react-dom": "ReactDOM",
-                "react-router-dom": "ReactRouterDOM",
-                "react/jsx-runtime": "ReactJSXRuntime",
-              },
+              inlineDynamicImports: true,
             },
           },
         }

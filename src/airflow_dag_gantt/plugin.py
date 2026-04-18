@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import mimetypes
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -10,11 +9,8 @@ from fastapi.staticfiles import StaticFiles
 
 from airflow.plugins_manager import AirflowPlugin
 
-mimetypes.add_type("application/javascript", ".cjs")
+app = FastAPI(title="Dag Gantt Chart", version="0.2.1")
 
-app = FastAPI(title="Dag Gantt Chart", version="0.2.0")
-
-# Serve UMD bundle
 _dist_dir = Path(__file__).parent / "dist"
 if _dist_dir.exists():
     app.mount("/dist", StaticFiles(directory=_dist_dir), name="dag_gantt_dist")
@@ -35,7 +31,7 @@ class DagGanttPlugin(AirflowPlugin):
         {
             "name": "Dag Gantt Chart",
             "url_route": "dag-gantt",
-            "bundle_url": "/dag-gantt/dist/main.umd.cjs",
+            "bundle_url": "/dag-gantt/dist/main.js",
             "destination": "nav",
             "category": "browse",
         }

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "airflow-dag-gantt"
-version = "0.2.2"
+version = "0.2.3"
 description = "Airflow 3.x plugin that visualizes Dag execution times as a Gantt chart"
 readme = "README.md"
 license = "Apache-2.0"

@@ -12,7 +12,7 @@ from airflow.plugins_manager import AirflowPlugin
 
 mimetypes.add_type("application/javascript", ".cjs")
 
-app = FastAPI(title="Dag Gantt Chart", version="0.2.2")
+app = FastAPI(title="Dag Gantt Chart", version="0.2.3")
 
 _dist_dir = Path(__file__).parent / "dist"
 if _dist_dir.exists():

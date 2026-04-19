@@ -17,22 +17,6 @@ export default defineConfig(({ command }) => {
             formats: ["umd"],
             name: "AirflowPlugin",
           },
-          rollupOptions: {
-            external: [
-              "react",
-              "react-dom",
-              "react-router-dom",
-              "react/jsx-runtime",
-            ],
-            output: {
-              globals: {
-                react: "React",
-                "react-dom": "ReactDOM",
-                "react-router-dom": "ReactRouterDOM",
-                "react/jsx-runtime": "ReactJSXRuntime",
-              },
-            },
-          },
         }
       : { chunkSizeWarningLimit: 1600 },
     define: {

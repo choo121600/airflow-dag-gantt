@@ -13,7 +13,4 @@ const PluginComponent: FC = () => {
   );
 };
 
-// Airflow 3.x react_apps 로더는 ESM dynamic import 후 globalThis.AirflowPlugin 을 조회한다.
-globalThis.AirflowPlugin = PluginComponent;
-
 export default PluginComponent;
